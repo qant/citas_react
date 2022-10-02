@@ -1,4 +1,14 @@
+import {useState, useEffect} from 'react';
+
 function Form() {
+  
+  const [petName, setPetName] = useState('');
+
+  const handleSubmit = (e)=>{
+    e.preventDefault();
+    console.log('Enviando...', e.target);
+  }
+
   return (
     
     <div className="md:w-1/2 lg:w-2/5">
@@ -11,10 +21,14 @@ function Form() {
       </p>
       <div className="relative">
         <div className="sticky">
-          <form className="bg-white shadow-md mb-10 py-10 px-5 rounded-md">
+          <form onSubmit={handleSubmit} className="bg-white shadow-md mb-10 py-10 px-5 rounded-md">
             <div className="mb-5">
-            <label htmlFor="pet_name" className="text-gray-700 uppercase">Pet Name</label>
-            <input id="pet_name" type="text" className="p-2 w-full border placeholder-gray-400 rounded-md" placeholder="Enter the Pet Name here" />
+            <label htmlFor="pet_name" className="text-gray-700 uppercase">
+              Pet Name </label>
+            <input id="pet_name" type="text" className="p-2 w-full border placeholder-gray-400 rounded-md" placeholder="Enter the Pet Name here" 
+            value={petName}
+            onChange={(e)=>setPetName(e.target.value)}
+            />
             </div>
 
             <div className="mb-5">   
