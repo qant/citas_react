@@ -3,6 +3,10 @@ import {useState, useEffect} from 'react';
 function Form() {
   
   const [petName, setPetName] = useState('');
+  const [ownerName, setOwnerName] = useState('');
+  const [email, setEmail] = useState('');
+  const [date, setDate] = useState('');
+  const [sintoms, setSintoms] = useState('');  
 
   const handleSubmit = (e)=>{
     e.preventDefault();
@@ -33,23 +37,30 @@ function Form() {
 
             <div className="mb-5">   
             <label htmlFor="owner_name" className="text-gray-700 uppercase">Owner Name</label>
-            <input id="owner_name" type="text" className="p-2 w-full border placeholder-gray-400 rounded-md" placeholder="Enter the Owner Name here" />
+            <input id="owner_name" type="text" className="p-2 w-full border placeholder-gray-400 rounded-md" placeholder="Enter the Owner Name here" value={ownerName}
+            onChange={(e)=>setOwnerName(e.target.value)}
+            />
             </div>
 
             <div className="mb-5">   
             <label htmlFor="owner_name" className="text-gray-700 uppercase">Email</label>
-            <input id="owner_name" type="email" className="p-2 w-full border placeholder-gray-400 rounded-md" placeholder="Enter the email here" />
+            <input id="owner_name" type="email" className="p-2 w-full border placeholder-gray-400 rounded-md" placeholder="Enter the email here" value={email}
+            onChange={(e)=>setEmail(e.target.value)}/>
             </div>
 
             <div className="mb-5">   
             <label htmlFor="date" className="text-gray-700 uppercase">Date</label>
-            <input id="date" type="date" className="p-2 w-full border placeholder-gray-400 rounded-md" />
+            <input id="date" type="date" className="p-2 w-full border placeholder-gray-400 rounded-md" 
+            value={date}
+            onChange={(e)=>setDate(e.target.value)}/>
             </div>
 
             <div className="mb-5">   
             <label htmlFor="sintoms" className="text-gray-700 uppercase">Date</label>
             <textarea id="sintoms" 
             className="p-2 w-full border placeholder-gray-400 rounded-md"
+            value={sintoms}
+            onChange={(e)=>setSintoms(e.target.value)}
             />
             </div>
 
