@@ -10,6 +10,17 @@ function Form() {
 
   const handleSubmit = (e)=>{
     e.preventDefault();
+
+    //Validate form inputs
+    console.log('Input values:',{petName,ownerName,email,date,sintoms});
+    
+    if([petName,ownerName,email,date,sintoms].includes('')){
+        console.log('Something is empty!')
+      }else{
+        console.log('All inputs have something!')
+      }
+
+
     console.log('Enviando...', e.target);
   }
 
