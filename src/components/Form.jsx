@@ -8,6 +8,8 @@ function Form() {
   const [date, setDate] = useState('');
   const [sintoms, setSintoms] = useState('');  
 
+  const [errors, setErrors] = useState(false);
+
   const handleSubmit = (e)=>{
     e.preventDefault();
 
@@ -15,13 +17,14 @@ function Form() {
     console.log('Input values:',{petName,ownerName,email,date,sintoms});
     
     if([petName,ownerName,email,date,sintoms].includes('')){
-        console.log('Something is empty!')
-      }else{
-        console.log('All inputs have something!')
+        setErrors(true);
+        console.log('Something is empty!');
+        return;
       }
-
-
-    console.log('Enviando...', e.target);
+        setErrors(false);
+        console.log('All inputs have something!');
+        console.log('Enviando...', e.target);
+    
   }
 
   return (
@@ -38,6 +41,13 @@ function Form() {
         <div className="sticky">
           <form onSubmit={handleSubmit} className="bg-white shadow-md mb-10 py-10 px-5 rounded-md">
             <div className="mb-5">
+
+            {errors && (
+            <div className="mb-5 bg-red-700 text-white uppercase text-bold rounded p-5 text-center">
+              <p>All field are required</p>
+            </div>
+            )}
+
             <label htmlFor="pet_name" className="text-gray-700 uppercase">
               Pet Name </label>
             <input id="pet_name" type="text" className="p-2 w-full border placeholder-gray-400 rounded-md" placeholder="Enter the Pet Name here" 
